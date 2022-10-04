@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title> Big Penguin is Watching You </title>
+
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    </head>
+
+    <body>
+        <div id="app">
+            <div>
+                <textarea v-model="query">
+
+                </textarea> <br>
+                <button> Query </button>
+            </div>
+
+            <div>
+                <button @:click="setTab('ResultTable')"> Result Table </button>
+                <button @:click="setTab('Query')"> Query </button>
+            </div>
+
+            <div v-if="tab == 'ResultTable'">
+                <h3> ResultTable </h3>
+            </div>
+
+            <div v-if="tab == 'Query'">
+                <h3> Query </h3>
+            </div>
+        </div>
+
+        <script>
+            const { createApp } = Vue
+
+            createApp({
+                data() {
+                    return {
+                        query: '',
+                        tab: 'ResultTable'
+                    }
+                },
+                methods: {
+                    setTab(tab) {
+                        this.tab = tab
+                    }
+                }
+            }).mount('#app')
+        </script>
+    </body>
+</html>
