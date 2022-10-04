@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 
 
+const { Pool } = require('pg');
+
 const dbpool = new Pool({
     connectionString: process.env.DATABASE_URL,
         ssl: {
@@ -14,9 +16,11 @@ const dbpool = new Pool({
     }
 });
 
+
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
+
 
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
