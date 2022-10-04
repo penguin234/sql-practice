@@ -29,7 +29,7 @@ app.post('/query', (req, res) => {
     };
 
     (async () => {
-        const client = await pool.connect();
+        const client = await dbpool.connect();
         try {
             const data = await client.query(query);
             result.data = data;
